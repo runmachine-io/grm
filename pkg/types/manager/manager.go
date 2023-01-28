@@ -14,8 +14,8 @@ package manager
 import (
 	"context"
 
-	"github.com/jaypipes/grm/pkg/compare"
-	"github.com/jaypipes/grm/pkg/types/resource"
+	"github.com/anydotcloud/grm/pkg/compare"
+	"github.com/anydotcloud/grm/pkg/types/resource"
 )
 
 // Manager is responsible for providing a consistent way to perform

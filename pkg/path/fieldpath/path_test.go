@@ -19,7 +19,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/jaypipes/grm/pkg/path/fieldpath"
+	"github.com/anydotcloud/grm/pkg/path/fieldpath"
 )
 
 func TestBasics(t *testing.T) {

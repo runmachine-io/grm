@@ -11,7 +11,7 @@
 
 package resource
 
-import "github.com/jaypipes/grm/pkg/types/resource/schema"
+import "github.com/anydotcloud/grm/pkg/types/resource/schema"
 
 // Identifiers contains all the information callers would need to identify a
 // particular resource
