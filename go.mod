@@ -1,4 +1,4 @@
-module github.com/jaypipes/grm
+module github.com/anydotcloud/grm
 
 go 1.19
 

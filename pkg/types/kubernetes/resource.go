@@ -16,7 +16,7 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/jaypipes/grm/pkg/types/resource"
+	"github.com/anydotcloud/grm/pkg/types/resource"
 )
 
 // Resource represents a custom resource object in the Kubernetes API that

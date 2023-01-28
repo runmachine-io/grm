@@ -12,9 +12,9 @@
 package resource
 
 import (
-	"github.com/jaypipes/grm/pkg/compare"
-	"github.com/jaypipes/grm/pkg/path/fieldpath"
-	"github.com/jaypipes/grm/pkg/types/resource/schema"
+	"github.com/anydotcloud/grm/pkg/compare"
+	"github.com/anydotcloud/grm/pkg/path/fieldpath"
+	"github.com/anydotcloud/grm/pkg/types/resource/schema"
 )
 
 // Resource is a logical representation of a cloud resource.

@@ -19,7 +19,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/jaypipes/grm/pkg/compare"
+	"github.com/anydotcloud/grm/pkg/compare"
 )
 
 func TestMapStringStringPEqual(t *testing.T) {

@@ -20,7 +20,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/jaypipes/grm/pkg/names"
+	"github.com/anydotcloud/grm/pkg/names"
 )
 
 func TestNames(t *testing.T) {

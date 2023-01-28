@@ -17,7 +17,7 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/jaypipes/grm/pkg/types/manager"
+	"github.com/anydotcloud/grm/pkg/types/manager"
 )
 
 // Mapper provides methods that marry the Kubernetes client semantics and

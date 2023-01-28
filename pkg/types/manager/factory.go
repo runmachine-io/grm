@@ -12,8 +12,8 @@
 package manager
 
 import (
-	"github.com/jaypipes/grm/pkg/types/credentials"
-	"github.com/jaypipes/grm/pkg/types/resource/schema"
+	"github.com/anydotcloud/grm/pkg/types/credentials"
+	"github.com/anydotcloud/grm/pkg/types/resource/schema"
 )
 
 // Factory returns a Manager that can be used to manage cloud resources for a

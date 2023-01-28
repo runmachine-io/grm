@@ -11,7 +11,7 @@
 
 package schema
 
-import "github.com/jaypipes/grm/pkg/path/fieldpath"
+import "github.com/anydotcloud/grm/pkg/path/fieldpath"
 
 // Schema contains methods that returns information about a resource's schema.
 type Schema interface {
