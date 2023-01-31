@@ -23,6 +23,8 @@ const (
 	FieldTypeNil
 	// FieldTypeInt is for integer types
 	FieldTypeInt
+	// FieldTypeBool is for boolean types
+	FieldTypeBool
 	// FieldTypeFloat is for float/double types
 	FieldTypeFloat
 	// FieldTypeTime is for time.Time types
@@ -46,6 +48,8 @@ func StringToFieldType(s string) FieldType {
 		return FieldTypeNil
 	case "int", "integer", "int32", "int64", "uint", "uint32", "uint64":
 		return FieldTypeInt
+	case "bool", "boolean":
+		return FieldTypeBool
 	case "double", "float", "float32", "float64":
 		return FieldTypeFloat
 	case "time", "date", "datetime", "timestamp":
