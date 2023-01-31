@@ -39,6 +39,32 @@ const (
 	FieldTypeStruct
 )
 
+// String returns the stringified field type
+func (t FieldType) String() string {
+	switch t {
+	case FieldTypeNil:
+		return "nil"
+	case FieldTypeInt:
+		return "int"
+	case FieldTypeBool:
+		return "bool"
+	case FieldTypeFloat:
+		return "float"
+	case FieldTypeTime:
+		return "time"
+	case FieldTypeString:
+		return "string"
+	case FieldTypeList:
+		return "list"
+	case FieldTypeMap:
+		return "map"
+	case FieldTypeStruct:
+		return "struct"
+	default:
+		return "unknown"
+	}
+}
+
 // StringToFieldType converts a string into the associated FieldType. Uses
 // case-insensitive matching.
 func StringToFieldType(s string) FieldType {
