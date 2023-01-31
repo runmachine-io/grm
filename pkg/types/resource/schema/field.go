@@ -11,12 +11,16 @@
 
 package schema
 
+import "strings"
+
 // FieldType indicates the underlying Go builtin type for a Field.
 type FieldType int
 
 const (
-	// FieldTypeNil is a placeholder for an nil type
-	FieldTypeNil FieldType = iota
+	// FieldTypeUnknown is a placeholder for an unknown field type
+	FieldTypeUnknown FieldType = iota
+	// FieldTypeNil is a placeholder for a nil type
+	FieldTypeNil
 	// FieldTypeInt is for integer types
 	FieldTypeInt
 	// FieldTypeFloat is for float/double types
@@ -32,6 +36,32 @@ const (
 	// FieldTypeStruct is for (nested) struct types
 	FieldTypeStruct
 )
+
+// StringToFieldType converts a string into the associated FieldType. Uses
+// case-insensitive matching.
+func StringToFieldType(s string) FieldType {
+	sl := strings.TrimSpace(strings.ToLower(s))
+	switch sl {
+	case "nil":
+		return FieldTypeNil
+	case "int", "integer", "int32", "int64", "uint", "uint32", "uint64":
+		return FieldTypeInt
+	case "double", "float", "float32", "float64":
+		return FieldTypeFloat
+	case "time", "date", "datetime", "timestamp":
+		return FieldTypeTime
+	case "str", "string":
+		return FieldTypeString
+	case "array", "list":
+		return FieldTypeList
+	case "map":
+		return FieldTypeMap
+	case "struct", "object":
+		return FieldTypeStruct
+	default:
+		return FieldTypeUnknown
+	}
+}
 
 // Field has methods that return information about a field in a resource.
 type Field interface {
@@ -61,6 +91,8 @@ type Field interface {
 	// when this Field has a Type of FieldTypeStruct. Returns nil when Type is
 	// not FieldTypeStruct.
 	MemberFields() map[string]Field
+	// IsRequired returns true if the field is required to be set by the user
+	IsRequired() bool
 	// IsReadOnly returns true if the field is not settable by the user
 	IsReadOnly() bool
 	// IsImmutable returns true if the field cannot be changed once set
