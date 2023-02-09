@@ -1,4 +1,4 @@
-// Parts of this code modified from aws-controllers-k8s/pkg/compare
+// Parts of this code modified from aws-controllers-k8s/pkg/names
 // Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"). You may
@@ -85,6 +85,14 @@ var (
 		{"Api", "API", "api", nil},
 		{"Arn", "ARN", "arn", nil},
 		{"Asn", "ASN", "asn", nil},
+		// eventbridge has a NetworkConfiguration.awsvpcConfiguration field for
+		// configuration of ECS tasks in "awsvpc" mode. aws-sdk-go transforms
+		// this to AwsvpcConfiguration in order to export the field name in
+		// Golang.
+		// (See https://github.com/aws/aws-sdk-go/blob/5707eba1610d563b9c563dbc862587649bcb9811/service/eventbridge/api.go#L13088)
+		// We need to prevent AwsvpcConfiguration from becoming
+		// AWSvpcConfiguration
+		{"Awsvpc", "AWSVPC", "awsVPC", nil},
 		{"Aws", "AWS", "aws", nil},
 		{"Az", "AZ", "az", nil},
 		{"Bgp", "BGP", "bgp", nil},
@@ -108,6 +116,7 @@ var (
 		// Prevent "Enable" and "Enabling" from becoming "ENAble"
 		{"Ena", "ENA", "ena", re2.MustCompile("Ena(?!bl)", re2.None)},
 		{"Ecmp", "ECMP", "ecmp", nil},
+		{"Fifo", "FIFO", "fifo", nil},
 		{"Fpga", "FPGA", "fpga", nil},
 		{"Gpu", "GPU", "gpu", nil},
 		{"Html", "HTML", "html", nil},
@@ -126,10 +135,12 @@ var (
 		{"Mfa", "MFA", "mfa", nil},
 		// Prevent "Native" from becoming "NATive"
 		{"Nat", "NAT", "nat", re2.MustCompile("Nat(?!i)", re2.None)},
-		// Prevent Oid from becoming oID
-		{"Oid", "OID", "oid", nil},
+		// Prevent Oid from becoming oID and OIDC from becoming OIDc
+		{"Oid", "OID", "oid", re2.MustCompile("Oid(?!c)", re2.None)},
+		{"OID", "OID", "oid", re2.MustCompile("OID(?!C)", re2.None)},
 		{"Oidc", "OIDC", "oidc", nil},
 		{"Ocsp", "OCSP", "ocsp", nil},
+		{"Pid", "PID", "pid", nil},
 		// Capitalize the 'd' following RAM in certain cases
 		{"Ramdisk", "RAMDisk", "ramDisk", re2.MustCompile("Ramdisk", re2.None)},
 		// Model fields starting with 'Ram' refer to RAM
@@ -138,6 +149,7 @@ var (
 		{"Sdk", "SDK", "sdk", nil},
 		{"Sha256", "SHA256", "sha256", nil},
 		{"Sns", "SNS", "sns", nil},
+		{"Sql", "SQL", "sql", nil},
 		{"Sqs", "SQS", "sqs", nil},
 		{"Sriov", "SRIOV", "sriov", nil},
 		{"Sse", "SSE", "sse", nil},
