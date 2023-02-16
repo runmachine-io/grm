@@ -39,6 +39,33 @@ const (
 	FieldTypeStruct
 )
 
+// EnumString returns the stringified field type enum name, mainly useful for
+// templates.
+func (t FieldType) EnumString() string {
+	switch t {
+	case FieldTypeNil:
+		return "FieldTypeNil"
+	case FieldTypeInt:
+		return "FieldTypeInt"
+	case FieldTypeBool:
+		return "FieldTypeBool"
+	case FieldTypeFloat:
+		return "FieldTypeFloat"
+	case FieldTypeTime:
+		return "FieldTypeTime"
+	case FieldTypeString:
+		return "FieldTypeString"
+	case FieldTypeList:
+		return "FieldTypeList"
+	case FieldTypeMap:
+		return "FieldTypeMap"
+	case FieldTypeStruct:
+		return "FieldTypeStruct"
+	default:
+		return "FieldTypeUnknown"
+	}
+}
+
 // String returns the stringified field type
 func (t FieldType) String() string {
 	switch t {
@@ -95,8 +122,6 @@ func StringToFieldType(s string) FieldType {
 
 // Field has methods that return information about a field in a resource.
 type Field interface {
-	// Name returns the normalized, camel-cased name of the field
-	Name() string
 	// Type returns the underlying type of the field.
 	Type() FieldType
 	// ElementType returns the type of the list's elements.

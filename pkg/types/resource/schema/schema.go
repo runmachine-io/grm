@@ -18,7 +18,7 @@ type Schema interface {
 	Kind
 	// Field returns a Field at a given field path, or nil if there is no Field
 	// at that path.
-	Field(fieldpath.Path) Field
+	Field(*fieldpath.Path) Field
 	// Fields returns a map, keyed by field path string, of Fields that
 	// describe the resource's member fields.
 	Fields() map[string]Field
