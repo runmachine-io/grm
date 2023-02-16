@@ -29,9 +29,9 @@ type Resource interface {
 	// IsReady returns true if the resource's state indicates that the resource
 	// is "active", "available" or "ready".
 	IsReady() bool
-	// IsMutable returns true if the resource's state indicates that the
-	// resource may be modified.
-	IsMutable() bool
+	// IsImmutable returns true if the resource's state indicates that the
+	// resource may NOT be modified.
+	IsImmutable() bool
 	// Errors returns zero or more errors that indicate why the resource may be
 	// in an invalid state.
 	Errors() []error
@@ -52,7 +52,15 @@ type Resource interface {
 	// element in a list field or a single key from a map field. Instead, Value
 	// returns the entire slice or map for a field identified by the supplied
 	// field path.
-	ValueAt(fieldpath.Path) interface{}
+	//
+	//
+	// Note that the field path is searched in a case-insensitive fashion. If
+	// there is no such field at the supplied path, returns a (nil, false)
+	// tuple.
+	ValueAt(*fieldpath.Path) (interface{}, bool)
 	// SetAt sets the value of a Resource field at the specified field path.
-	SetAt(fieldpath.Path, interface{}) error
+	//
+	// Note that the field path is searched in a case-insensitive fashion. If
+	// there is no such field at the supplied path, returns an error.
+	SetAt(*fieldpath.Path, interface{}) error
 }
