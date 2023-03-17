@@ -43,6 +43,7 @@ func TestNames(t *testing.T) {
 		// eventbridge has a NetworkConfiguration.AwsvpcConfiguration field for
 		// configuration of ECS tasks in "awsvpc" mode
 		{"AwsvpcConfiguration", "AWSVPCConfiguration", "awsVPCConfiguration", "aws_vpc_configuration", "awsvpcconfiguration"},
+		{"AuthorizerResultTtlInSeconds", "AuthorizerResultTTLInSeconds", "authorizerResultTTLInSeconds", "authorizer_result_ttl_in_seconds", "authorizerresultttlinseconds"},
 		{"CacheSecurityGroup", "CacheSecurityGroup", "cacheSecurityGroup", "cache_security_group", "cachesecuritygroup"},
 		{"Camila", "Camila", "camila", "camila", "camila"},
 		{"DbInstanceId", "DBInstanceID", "dbInstanceID", "db_instance_id", "dbinstanceid"},
@@ -97,6 +98,8 @@ func TestNames(t *testing.T) {
 		{"Sqs", "SQS", "sqs", "sqs", "sqs"},
 		{"SriovNetSupport", "SRIOVNetSupport", "sriovNetSupport", "sriov_net_support", "sriovnetsupport"},
 		{"SSEKMSKeyID", "SSEKMSKeyID", "sseKMSKeyID", "sse_kms_key_id", "ssekmskeyid"},
+		{"Throttle", "Throttle", "throttle", "throttle", "throttle"},
+		{"Throttling", "Throttling", "throttling", "throttling", "throttling"},
 		{"Tpm", "TPM", "tpm", "tpm", "tpm"},
 		{"UUID", "UUID", "uuid", "uuid", "uuid"},
 		{"Vlan", "VLAN", "vlan", "vlan", "vlan"},
