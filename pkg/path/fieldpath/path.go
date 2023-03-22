@@ -15,7 +15,6 @@
 package fieldpath
 
 import (
-	"encoding/json"
 	"strings"
 )
 
@@ -33,16 +32,13 @@ func (p *Path) String() string {
 
 // MarshalJSON returns the JSON encoding of a Path object.
 func (p *Path) MarshalJSON() ([]byte, error) {
-	// Since json.Marshal doesn't encode unexported struct fields we have to
-	// copy the Path instance into a new struct object with exported fields.
-	// See https://github.com/aws-controllers-k8s/community/issues/772
-	return json.Marshal(
-		struct {
-			Parts []string
-		}{
-			p.parts,
-		},
-	)
+	return []byte(p.String()), nil
+}
+
+// UnmarshalJSON returns a Path from a dotted notation string
+func (p *Path) UnmarshalJSON(b []byte) error {
+	p = FromString(string(b))
+	return nil
 }
 
 // Pop removes the last part from the Path and returns it.
