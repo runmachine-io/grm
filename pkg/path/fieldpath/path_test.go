@@ -80,4 +80,9 @@ func TestJSON(t *testing.T) {
 	bytes, err := json.Marshal(p)
 	require.Nil(err)
 	require.Equal("\"Author.Name\"", string(bytes))
+
+	var np fieldpath.Path
+	err = json.Unmarshal(bytes, &np)
+	require.Nil(err)
+	require.Equal("Author.Name", np.String())
 }
