@@ -15,6 +15,7 @@
 package fieldpath_test
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -70,4 +71,13 @@ func TestHasPrefix(t *testing.T) {
 	// Case-insensitive comparisons...
 	require.False(p.HasPrefix("author"))
 	require.True(p.HasPrefixFold("author"))
+}
+
+func TestJSON(t *testing.T) {
+	require := require.New(t)
+
+	p := fieldpath.FromString("Author.Name")
+	bytes, err := json.Marshal(p)
+	require.Nil(err)
+	require.Equal("\"Author.Name\"", string(bytes))
 }

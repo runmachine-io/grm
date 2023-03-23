@@ -15,6 +15,7 @@
 package fieldpath
 
 import (
+	"encoding/json"
 	"strings"
 )
 
@@ -32,7 +33,7 @@ func (p *Path) String() string {
 
 // MarshalJSON returns the JSON encoding of a Path object.
 func (p *Path) MarshalJSON() ([]byte, error) {
-	return []byte(p.String()), nil
+	return json.Marshal(p.String())
 }
 
 // UnmarshalJSON returns a Path from a dotted notation string
