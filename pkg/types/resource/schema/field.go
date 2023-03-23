@@ -11,7 +11,10 @@
 
 package schema
 
-import "strings"
+import (
+	"encoding/json"
+	"strings"
+)
 
 // FieldType indicates the underlying Go builtin type for a Field.
 type FieldType int
@@ -90,6 +93,22 @@ func (t FieldType) String() string {
 	default:
 		return "unknown"
 	}
+}
+
+// MarshalJSON converts the integer representation of the field type into a
+// string.
+func (t *FieldType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(t.String())
+}
+
+// UnmarshalJSON converts the string representation into the enum/integer
+// representation of the field type
+func (t *FieldType) UnmarshalJSON(data []byte) error {
+	// remove the enclosing double quotes...
+	var s string
+	json.Unmarshal(data, &s)
+	*t = StringToFieldType(s)
+	return nil
 }
 
 // StringToFieldType converts a string into the associated FieldType. Uses

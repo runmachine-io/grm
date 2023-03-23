@@ -38,7 +38,10 @@ func (p *Path) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON returns a Path from a dotted notation string
 func (p *Path) UnmarshalJSON(b []byte) error {
-	p = FromString(string(b))
+	// remove the enclosing double quotes...
+	var s string
+	json.Unmarshal(b, &s)
+	*p = *FromString(s)
 	return nil
 }
 
